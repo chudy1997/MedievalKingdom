@@ -23,6 +23,22 @@ public class Knight {
         }
         return res;
     }
+
+    public double getKnightPower(){
+        double power=ratio;
+        for(Property p:freeProperties)
+            power+=p.getAnnualIncome();
+        return power;
+    }
+
+    public double getVassalsPower(){
+        double vassalsPower=0;
+        for(Knight vassal:vassals){
+            vassalsPower+=vassal.getKnightPower();
+        }
+        return vassalsPower;
+    }
+
     public void addProperty(Property p){
         properties.add(p);
         freeProperties.add(p);
