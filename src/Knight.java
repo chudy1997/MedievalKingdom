@@ -7,7 +7,7 @@ import java.util.Set;
 public class Knight {
     private final static double ratio = 0.01;
     private final static int maxAnnualIncomeOfRuralTribute = 1000;
-    private final String name;
+    protected final String name;
     private final Set<Property> properties=new HashSet<>();
     private final Set<Property> freeProperties=new HashSet<>();
     private final Set<Knight> vassals=new HashSet<>();
@@ -16,6 +16,7 @@ public class Knight {
     Knight(String name){
         this.name=name;
     }
+
     public int getValueOfProperties(){
         int res=0;
         for (Property p:freeProperties) {
@@ -44,14 +45,6 @@ public class Knight {
         freeProperties.add(p);
     }
     public boolean giveProperty(Knight vassal){
-        if(vassals.size()==0){
-            System.err.println("giveProperty: it has to be invoked for senior");
-            return false;
-        }
-        if(senior==null){
-            System.err.println("giveProperty: it cannot be invoked for knight being already vassal");
-            return false;
-        }
         if(freeProperties.size()==0){
             System.err.println("Senior has no free property to give");
             return false;
@@ -60,7 +53,7 @@ public class Knight {
             System.err.println("Senior cannot have more than 7 vassals");
         }
         Property p=(Property)(freeProperties.toArray())[0];
-        if(!p.muncipal){
+        if(!p.municipal){
             int quotient=p.getAnnualIncome()/maxAnnualIncomeOfRuralTribute;
             if(quotient>1){
                 Property[] tmp=p.splitProperty(quotient);
@@ -83,12 +76,12 @@ public class Knight {
         return true;
     }
     public boolean giveTribute(Knight senior){
-        if(senior==null) {
+        if(this.senior!=null) {
             System.err.println("giveTribute: cannot be invoked for knight being already vassal");
             return false;
         }
         if(this instanceof King) {
-            System.err.println("giveTributte: cannot be invoked for king");
+            System.err.println("giveTribute: cannot be invoked for king");
             return false;
         }
         this.senior=senior;

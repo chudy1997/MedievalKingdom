@@ -3,27 +3,27 @@
  */
 public final class Property {
     private final Rectangle location;
-    final boolean muncipal;
+    final boolean municipal;
 
-    public Property(int x,int y,int length,int width,boolean muncipal){
+    public Property(int x,int y,int length,int width,boolean municipal){
         location=new Rectangle(x,y,length,width);
-        this.muncipal=muncipal;
+        this.municipal=municipal;
     }
-    public Property(Rectangle loc, boolean muncipal){
+    public Property(Rectangle loc, boolean municipal){
         location=loc;
-        this.muncipal=muncipal;
+        this.municipal=municipal;
     }
     public int getAnnualIncome(){
         return location.length*location.width;
     }
     public Property[] splitProperty(int n){
-        if(muncipal){
+        if(municipal){
             System.err.println("Cannot split muncipal property");
             return null;
         }
         Property[] res=new Property[n];
         for(int i=0;i<n;i++)
-            res[i]=new Property(new Rectangle(location.x+i*location.length/n,location.y,location.length/n,location.width),muncipal);
+            res[i]=new Property(new Rectangle(location.x+i*location.length/n,location.y,location.length/n,location.width),municipal);
         return res;
     }
 

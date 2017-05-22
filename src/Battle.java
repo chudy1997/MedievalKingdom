@@ -18,8 +18,14 @@ public class Battle {
     public void fight(){
         double wholeKnight1Power=getWholeKnightPower(this.knight1);
         double wholeKnight2Power=getWholeKnightPower(this.knight2);
-        if(wholeKnight1Power>wholeKnight2Power) System.out.println("The winner is "+this.knight1.toString());
-        else System.out.println("The winner is "+this.knight2.toString());
+        if(wholeKnight1Power>wholeKnight2Power) {
+            System.out.println("The winner is " + this.knight1.name);
+            this.knight2.giveProperty(this.knight1);
+        }
+        else {
+            System.out.println("The winner is "+this.knight2.name);
+            this.knight1.giveProperty(this.knight2);
+        }
     }
 
 }

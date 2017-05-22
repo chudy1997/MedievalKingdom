@@ -62,8 +62,8 @@ public class Main {
         knight9.addProperty(property11);
         knight.addProperty(property12);
         knight.addProperty(property13);
-        knight4.addProperty(property14);
-        knight4.addProperty(property15);
+        knight1.addProperty(property14);
+        knight1.addProperty(property15);
 
         knight3.giveTribute(knight);
         knight4.giveTribute(knight);
