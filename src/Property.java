@@ -9,13 +9,16 @@ public final class Property {
         location=new Rectangle(x,y,length,width);
         this.municipal=municipal;
     }
+
     public Property(Rectangle loc, boolean municipal){
         location=loc;
         this.municipal=municipal;
     }
+
     public int getAnnualIncome(){
         return location.length*location.width;
     }
+
     public Property[] splitProperty(int n){
         if(municipal){
             System.err.println("Cannot split muncipal property");
